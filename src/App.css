@@ -1,38 +1,157 @@
-.App {
-  text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+:root {
+    --border-radius: 25px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-size: 1.125rem;
+    color: rgb(218, 218, 218);
+    user-select: none;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.root {
+    height: 100vh;
+    background-color: rgb(26, 26, 26);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+.drum-machine {
+    border: 3px solid rgb(15, 15, 15);
+    background-color: rgb(194, 194, 194);
+    width: auto;
+    display: flex;
+    /* border-top-left-radius: 8px; */
+    border-bottom-left-radius: 8px;
+    position: relative;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.display {
+    position: absolute;
+    top: -50px;
+    height: 50px;
+    width: 550px;
+    background-color: rgb(218, 218, 218);
+    color: rgb(26, 26, 26);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top-left-radius: var(--border-radius);
+    border-top-right-radius: var(--border-radius);
+    letter-spacing: 1.2px;
+}
+
+.pad-bank {
+    height: 400px;
+    width: 550px;
+    display: grid;
+    place-items: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-column-gap: 15px;
+    grid-row-gap: 15px;
+    padding: 40px;
+}
+
+.pad-bank > .drum-pad {
+    background-color: rgb(26, 26, 26);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    user-select: none;
+    cursor: pointer;
+}
+
+.control-panel-toggler {
+    position: absolute;
+    height: 400px;
+    width: 20px;
+    background-color: rgb(218, 218, 218);
+    right: -20px;
+    border-top-right-radius: var(--border-radius);
+    border-bottom-right-radius: var(--border-radius);
+    cursor: pointer;
+    color: rgb(26, 26, 26);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+}
+
+.control-panel-toggler:hover {
+    background: linear-gradient(90deg, rgb(194, 194, 194), rgb(218, 218, 218) 10px);
+}
+
+.control-panel-toggler > i {
+    transition: transform 0.8s ease;
+}
+
+.control-panel-toggler > .flip {
+    transform: scaleX(-1);
+}
+
+.control-panel-closed {
+    width: 0px;
+    transition: width 0.5s ease;
+}
+
+.control-panel {
+    height: 400px;
+    width: 400px;
+    transition: width 0.5s;
+    color: rgb(26, 26, 26);
+    /* background: linear-gradient(90deg, rgba(15, 15, 15, 0.3), rgb(218, 218, 218) 5px); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.control-panel-content-closed {
+    display: none;
+}
+
+.control-panel-content {
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    /* background-color: cadetblue; */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    padding: 40px;
+}
+
+.content-appear {
+    opacity: 1;
+}
+
+/* .power {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+} */
+
+.volume {
+    text-align: center;
+}
+
+.form-switch.form-switch-lg .form-check-input {
+    height: 1.6rem;
+    width: calc(3rem + 0.5rem);
+    /* border-radius: 2rem; */
 }
